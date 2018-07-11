@@ -2,4 +2,4 @@
 Elias-Fano encoding in Rust
 
 ## License
-MIT licensed, see LICENSE.txt for more details.
+MIT licensed, see LICENSE for more details.
