@@ -1,4 +1,6 @@
 # Elano-Fias, in Rust
+[![Build Status](https://img.shields.io/badge/crate-elias--fano-brightgreen.svg)](https://crates.io/crates/elias-fano)
+
 Elias-Fano encoding in Rust
 
 ## Todo:
