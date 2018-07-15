@@ -171,9 +171,9 @@ impl EliasFano {
             }
             low = low << 1;
         }
-        low = low << 1;
+        low = low >> 1;
 
-        self.cur_value = (self.high_bits_pos - self.position - 1) << self.lower_bits | low;
+        self.cur_value = (((self.high_bits_pos - self.position - 1) << self.lower_bits) | low) as u64;
     }
 
     pub fn shift(&mut self) -> u64 {
