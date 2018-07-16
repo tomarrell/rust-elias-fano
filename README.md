@@ -1,5 +1,6 @@
 # Elias-Fano, in Rust
 [![Build Status](https://img.shields.io/badge/crate-elias--fano-brightgreen.svg)](https://crates.io/crates/elias-fano)
+[![Rust Docs](https://img.shields.io/badge/docs.rs-elias--fano-orange.svg)](https://docs.rs/elias-fano/0.2.3/elias_fano/)
 
 Elias-Fano encoding in Rust.
 
@@ -18,7 +19,7 @@ This implementation is based largely on one written in Go by [Antonio Mallia](ht
 Add the following line to your Cargo.toml:
 ```diff
 [dependencies]
-+ elias-fano = "0.2.1"
++ elias-fano = "0.2.3"
 ```
 
 ## Example Usage
