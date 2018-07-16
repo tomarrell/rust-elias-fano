@@ -16,7 +16,7 @@ This implementation is based largely on one written in Go by [Antonio Mallia](ht
 
 ## Installation
 Add the following line to your Cargo.toml:
-```toml
+```diff
 [dependencies]
 + elias-fano = "0.2.1"
 ```
