@@ -14,6 +14,10 @@ pub fn get_next_set(bitset: &FixedBitSet, index: usize) -> u64 {
 pub fn set_bits(b: &mut FixedBitSet, offset: u64, bits: u64, length: u64) {
     for i in 0..length {
         let val = bits & (1 << (length - i - 1));
+        if offset + i + 1 >= b.len() as u64 {
+            let new_length = offset + i + 1 + 1;
+            b.grow(new_length as usize);
+        }
         b.set((offset + i + 1) as usize, val > 0);
     }
 }

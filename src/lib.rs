@@ -78,7 +78,8 @@ impl EliasFano {
 
             self.b.set(high as usize, true);
 
-            let offset = self.lower_bits_offset + i as u64 + self.lower_bits;
+            let offset = self.lower_bits_offset + (i as u64 * self.lower_bits);
+            // println!("{} {} {} {}", self.lower_bits_offset, i, self.lower_bits, offset);
             set_bits(&mut self.b, offset, low, self.lower_bits);
 
             last = *elem;
@@ -173,18 +174,8 @@ impl EliasFano {
         }
         low = low >> 1;
 
-        self.cur_value = (((self.high_bits_pos - self.position - 1) << self.lower_bits) | low) as u64;
-    }
-
-    pub fn shift(&mut self) -> u64 {
-        self.position += 1;
-
-        if self.position >= self.size() {
-            0
-        } else {
-            self.read_current_value();
-            self.value()
-        }
+        self.cur_value =
+            (((self.high_bits_pos - self.position - 1) << self.lower_bits) | low) as u64;
     }
 
     pub fn info(&self) {
