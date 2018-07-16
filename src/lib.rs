@@ -79,7 +79,6 @@ impl EliasFano {
             self.b.set(high as usize, true);
 
             let offset = self.lower_bits_offset + (i as u64 * self.lower_bits);
-            // println!("{} {} {} {}", self.lower_bits_offset, i, self.lower_bits, offset);
             set_bits(&mut self.b, offset, low, self.lower_bits);
 
             last = *elem;
@@ -91,8 +90,6 @@ impl EliasFano {
         }
     }
 
-    // Equivalent to go-ef Move method
-    // fn move
     pub fn visit(&mut self, position: u64) -> Result<u64, OutOfBoundsError> {
         if position > self.size() {
             return Err(OutOfBoundsError);
