@@ -14,6 +14,13 @@ This implementation is based largely on one written in Go by [Antonio Mallia](ht
 - [x] Example usage
 - [ ] Benchmarks, comparison with other implementations
 
+## Installation
+Add the following line to your Cargo.toml:
+```toml
+[dependencies]
++ elias-fano = "0.2.1"
+```
+
 ## Example Usage
 ```rust
 extern crate elias_fano;
