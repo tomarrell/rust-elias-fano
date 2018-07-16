@@ -14,5 +14,37 @@ This implementation is based largely on one written in Go by [Antonio Mallia](ht
 - [ ] Example usage
 - [ ] Benchmarks, comparison with other implementations
 
+## Example Usage
+```rust
+extern crate elias_fano;
+
+use elias_fano::EliasFano;
+
+fn main() {
+    let sorted_array = [0, 3, 40, 1000];
+    let size = sorted_array.len();
+
+    let mut ef = EliasFano::new(sorted_array[size - 1], size as u64);
+
+    ef.compress(&sorted_array);
+
+    println!("{}", ef.value()); // 1
+
+    match ef.next() {
+        Ok(val) => println!("Retrieved value: {}", val), // 3
+        Err(error) => println!("Err: {}", error),        // Out of bounds
+    }
+
+    let _ = ef.next();
+    println!("{}", ef.value()); // 40
+
+    ef.reset();
+    println!("{}", ef.value()); // 0
+
+    let _ = ef.visit(3);
+    println!("{}", ef.value()); // 1000
+}
+```
+
 ## License
 MIT licensed, see LICENSE for more details.
