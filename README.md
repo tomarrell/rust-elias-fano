@@ -11,7 +11,7 @@ This implementation is based largely on one written in Go by [Antonio Mallia](ht
 
 ## Todo:
 - [x] Tests
-- [ ] Example usage
+- [x] Example usage
 - [ ] Benchmarks, comparison with other implementations
 
 ## Example Usage
