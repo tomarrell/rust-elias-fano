@@ -19,7 +19,7 @@ This implementation is based largely on one written in Go by [Antonio Mallia](ht
 Add the following line to your Cargo.toml:
 ```diff
 [dependencies]
-+ elias-fano = "0.2.4"
++ elias-fano = "0.2.5"
 ```
 
 ## Example Usage

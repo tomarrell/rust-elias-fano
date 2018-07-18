@@ -46,7 +46,7 @@ fn test_position() {
         if ef.position() != i {
             panic!("Index is returning wrong position for linear increment")
         }
-        ef.next();
+        let _ = ef.next();
     }
 }
 
@@ -66,7 +66,7 @@ fn test_reset() {
         panic!("Initial position is not equal to 0");
     }
 
-    ef.next();
+    let _ = ef.next();
     ef.reset();
 
     if ef.position() != 0 {
@@ -95,14 +95,14 @@ fn test_move() {
     }
 
     for (idx, val) in array.iter().enumerate() {
-        ef.visit(idx as u64);
+        let _ = ef.visit(idx as u64);
         if ef.value() != *val {
             panic!("Received unexpected value after visit");
         }
     }
 
     for i in 0..NUM {
-        ef.visit((array.len() - i as usize - 1) as u64);
+        let _ = ef.visit((array.len() - i as usize - 1) as u64);
         if ef.value() != array[array.len() - i as usize - 1] {
             panic!("Incorrect value found while visiting backwards");
         }
@@ -118,13 +118,13 @@ fn test_generic() {
         panic!("Incorrect start value");
     }
 
-    ef.visit(0);
+    let _ = ef.visit(0);
 
     if ef.value() != 0 {
         panic!("0 visit returns different value");
     }
 
-    ef.visit(4);
+    let _ = ef.visit(4);
 
     if ef.value() != 1000 {
         panic!(
@@ -140,7 +140,7 @@ fn test_generic() {
         panic!("Incorrect behaviour on reset");
     }
 
-    ef.next();
+    let _ = ef.next();
 
     if ef.value() != 5 {
         panic!(
@@ -150,7 +150,7 @@ fn test_generic() {
         );
     }
 
-    ef.next();
+    let _ = ef.next();
 
     if ef.value() != 9 {
         panic!(
@@ -160,7 +160,7 @@ fn test_generic() {
         );
     }
 
-    ef.visit(1);
+    let _ = ef.visit(1);
 
     if ef.value() != 5 {
         panic!(
