@@ -42,7 +42,7 @@ impl EliasFano {
         let lower_bits = if universe > n { msb(universe / n) } else { 0 };
         let higher_bits_length = n + (universe >> lower_bits) + 2;
         let mask = (1_u64 << lower_bits) - 1;
-        let lower_bits_offset = higher_bits_length.clone();
+        let lower_bits_offset = higher_bits_length;
         let bv_len = lower_bits_offset + n * (lower_bits as u64);
         let b = FixedBitSet::with_capacity(bv_len as usize);
 
@@ -124,7 +124,7 @@ impl EliasFano {
         }
 
         self.read_current_value();
-        return Ok(self.value());
+        Ok(self.value())
     }
 
     pub fn reset(&mut self) {
@@ -167,9 +167,9 @@ impl EliasFano {
             if self.b.contains((offset + i + 1) as usize) {
                 low += 1;
             }
-            low = low << 1;
+            low <<= 1;
         }
-        low = low >> 1;
+        low >>= 1;
 
         self.cur_value =
             (((self.high_bits_pos - self.position - 1) << self.lower_bits) | low) as u64;
