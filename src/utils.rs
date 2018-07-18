@@ -44,7 +44,3 @@ mod tests {
         assert_eq!(63, msb(<u64>::max_value()));
     }
 }
-
-// "It is non trivial whether this code is actually correct for all u64 :
-// https://github.com/tomarrell/rust-elias-fano/blob/master/src/utils.rs#L33
-// u64::heading_zeros is a better implementation of msb. Again it compiles to one instruction, and it does not require to study f64 and its log implementation to know whether it is correct or not." - fulmicoton
