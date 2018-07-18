@@ -1,6 +1,6 @@
 # Elias-Fano, in Rust
 [![Build Status](https://img.shields.io/badge/crate-elias--fano-brightgreen.svg)](https://crates.io/crates/elias-fano)
-[![Rust Docs](https://img.shields.io/badge/docs.rs-elias--fano-orange.svg)](https://docs.rs/elias-fano/0.2.4/elias_fano/)
+[![Rust Docs](https://img.shields.io/badge/docs.rs-elias--fano-orange.svg)](https://docs.rs/elias-fano)
 
 Elias-Fano encoding in Rust.
 
