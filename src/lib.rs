@@ -104,11 +104,9 @@ impl EliasFano {
         }
 
         let skip = position - self.position;
-        let mut pos = self.high_bits_pos;
-
-        for _ in 0..skip {
-            pos = get_next_set(&self.b, (pos + 1) as usize);
-        }
+        let pos = (0..skip).fold(self.high_bits_pos, |pos, _| {
+            get_next_set(&self.b, (pos + 1) as usize)
+        });
 
         self.high_bits_pos = (pos - 1) as u64;
         self.position = position;
@@ -150,15 +148,13 @@ impl EliasFano {
     }
 
     pub fn read_current_value(&mut self) {
-        let mut pos = self.high_bits_pos;
+        let pos = if self.high_bits_pos > 0 {
+            self.high_bits_pos + 1
+        } else {
+            self.high_bits_pos
+        };
 
-        if pos > 0 {
-            pos += 1
-        }
-
-        pos = get_next_set(&self.b, pos as usize);
-
-        self.high_bits_pos = pos as u64;
+        self.high_bits_pos = get_next_set(&self.b, pos as usize) as u64;
 
         let mut low = 0;
         let offset = self.lower_bits_offset + self.position * self.lower_bits;
