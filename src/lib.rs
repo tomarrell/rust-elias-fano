@@ -8,6 +8,7 @@ use fixedbitset::FixedBitSet;
 use std::error::Error;
 use std::fmt;
 
+#[derive(Debug)]
 pub struct EliasFano {
     universe: u64,
     n: u64,
@@ -174,9 +175,12 @@ impl EliasFano {
         self.cur_value =
             (((self.high_bits_pos - self.position - 1) << self.lower_bits) | low) as u64;
     }
+}
 
-    pub fn info(&self) {
-        println!(
+impl fmt::Display for EliasFano {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(
+            f,
             "
     Universe: {:?}
     Elements: {:?}
@@ -193,6 +197,6 @@ impl EliasFano {
             self.mask,
             self.lower_bits_offset,
             self.bv_len,
-        );
+        )
     }
 }
