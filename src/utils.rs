@@ -3,12 +3,9 @@ extern crate fixedbitset;
 use fixedbitset::FixedBitSet;
 
 pub fn get_next_set(bitset: &FixedBitSet, index: usize) -> u64 {
-    for i in index..bitset.len() {
-        if bitset.contains(i) {
-            return i as u64;
-        }
-    }
-    0
+    (index..bitset.len())
+        .find(|&i| bitset.contains(i))
+        .unwrap_or(0) as u64
 }
 
 pub fn set_bits(b: &mut FixedBitSet, offset: u64, bits: u64, length: u64) {
