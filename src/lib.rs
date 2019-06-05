@@ -129,6 +129,11 @@ impl EliasFano {
         Ok(self.value())
     }
 
+    pub fn skip(&mut self, n: u64) -> Result<u64, OutOfBoundsError> {
+        let new_pos = self.position() + n;
+        self.visit(new_pos)
+    }
+
     pub fn reset(&mut self) {
         self.high_bits_pos = 0;
         self.position = 0;

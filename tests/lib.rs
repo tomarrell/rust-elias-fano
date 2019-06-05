@@ -51,6 +51,28 @@ fn test_position() {
 }
 
 #[test]
+fn test_skip() {
+    const NUM: u64 = 1000;
+    let mut ef = EliasFano::new(NUM, NUM);
+    let array: Vec<u64> = vec![0; NUM as usize]
+        .iter()
+        .enumerate()
+        .map(|(idx, _)| idx as u64)
+        .collect();
+
+    ef.compress(array.iter());
+
+    ef.skip(500);
+    assert_eq!(ef.value(), 500);
+
+    ef.skip(350);
+    assert_eq!(ef.value(), 850);
+
+    assert!(ef.skip(149).is_ok());
+    assert!(ef.skip(150).is_err());
+}
+
+#[test]
 fn test_reset() {
     const NUM: u64 = 1000;
     let mut ef = EliasFano::new(NUM, NUM);
