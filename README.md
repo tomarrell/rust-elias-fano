@@ -19,7 +19,7 @@ This implementation is based largely on one written in Go by [Antonio Mallia](ht
 Add the following line to your Cargo.toml:
 ```diff
 [dependencies]
-+ elias-fano = "1.0.0"
++ elias-fano = "1.0.1"
 ```
 
 ## Example Usage
@@ -34,7 +34,7 @@ fn main() {
 
     let mut ef = EliasFano::new(sorted_array[size - 1], size as u64);
 
-    ef.compress(&sorted_array);
+    ef.compress(sorted_array.iter());
 
     println!("{}", ef.value()); // 1
 
