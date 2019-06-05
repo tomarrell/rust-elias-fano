@@ -1,6 +1,6 @@
 [package]
 name = "elias-fano"
-version = "1.0.1"
+version = "1.1.0"
 authors = ["Tom Arrell <tom.arrell@gmail.com>"]
 description = "An implementation of Elias-Fano encoding in Rust"
 repository = "https://github.com/tomarrell/rust-elias-fano"
