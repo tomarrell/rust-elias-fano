@@ -12,7 +12,7 @@ fn test_membership() {
         .map(|(idx, _)| idx as u64)
         .collect();
 
-    ef.compress(&array);
+    ef.compress(array.iter());
 
     for (idx, v) in array.iter().enumerate() {
         if ef.value() != *v {
@@ -40,7 +40,7 @@ fn test_position() {
         .map(|(idx, _)| idx as u64)
         .collect();
 
-    ef.compress(&array);
+    ef.compress(array.iter());
 
     for i in 0..NUM {
         if ef.position() != i {
@@ -60,7 +60,7 @@ fn test_reset() {
         .map(|(idx, _)| idx as u64)
         .collect();
 
-    ef.compress(&array);
+    ef.compress(array.iter());
 
     if ef.position() != 0 {
         panic!("Initial position is not equal to 0");
@@ -88,7 +88,7 @@ fn test_move() {
         .map(|(idx, _)| idx as u64)
         .collect();
 
-    ef.compress(&array);
+    ef.compress(array.iter());
 
     if ef.position() != 0 {
         panic!("Initial position is not equal to 0");
@@ -112,7 +112,7 @@ fn test_move() {
 #[test]
 fn test_generic() {
     let mut ef = EliasFano::new(1000, 5);
-    ef.compress(&[0, 5, 9, 800, 1000]);
+    ef.compress([0, 5, 9, 800, 1000].iter());
 
     if ef.value() != 0 {
         panic!("Incorrect start value");

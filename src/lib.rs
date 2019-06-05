@@ -62,10 +62,12 @@ impl EliasFano {
         }
     }
 
-    pub fn compress(&mut self, elems: &[u64]) {
+    pub fn compress<'a, I>(&mut self, elems: I)
+        where I: Iterator<Item = &'a u64>
+    {
         let mut last = 0_u64;
 
-        for (i, elem) in elems.iter().enumerate() {
+        for (i, elem) in elems.enumerate() {
             if i > 0 && *elem < last {
                 panic!("Sequence is not sorted");
             }
@@ -74,7 +76,7 @@ impl EliasFano {
                 panic!("Element {} is greater than universe", elem);
             }
 
-            let high = (*elem >> self.lower_bits) + i as u64 + 1;
+            let high = (elem >> self.lower_bits) + i as u64 + 1;
             let low = elem & self.mask;
 
             self.b.set(high as usize, true);
@@ -148,7 +150,7 @@ impl EliasFano {
         self.n
     }
 
-    pub fn read_current_value(&mut self) {
+    fn read_current_value(&mut self) {
         let pos = if self.high_bits_pos > 0 {
             self.high_bits_pos + 1
         } else {
