@@ -63,7 +63,8 @@ impl EliasFano {
     }
 
     pub fn compress<'a, I>(&mut self, elems: I)
-        where I: Iterator<Item = &'a u64>
+    where
+        I: Iterator<Item = &'a u64>,
     {
         let mut last = 0_u64;
 
